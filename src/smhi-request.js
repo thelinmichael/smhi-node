@@ -6,9 +6,7 @@ var Promise = require("es6-promise").Promise,
 var Request = function() {};
 
 Request.make = function(lat, lon) {
-  var url = (new QueryBuilder())
-    .latAndLong(lat, lon)
-    .build();
+  var url = new QueryBuilder().latAndLong(lat, lon).build();
 
   var promise = new Promise(function(resolve, reject) {
     needle.get(url, function (error, response, body) {

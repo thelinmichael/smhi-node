@@ -1,5 +1,5 @@
 {
-  "host" : "http://http://opendata-download-metfcst.smhi.se",
+  "host" : "http://opendata-download-metfcst.smhi.se",
   "port" : 80,
   "apiBasePath" : "/api/category/pmp1g/version/1/"
 }

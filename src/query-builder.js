@@ -4,18 +4,21 @@ var QueryBuilder = function() {
   this.query = this.buildBaseUrl();
 };
 
-var latAndLong = function(lat, lon) {
+QueryBuilder.prototype.latAndLong = function(lat, lon) {
   this.query += "geopoint/";
-  this.query += "lat/" + lat;
-  this.query += "lon/" + lon;
-  this.query += "/";
+  this.query += "lat/" + lat + "/";
+  this.query += "lon/" + lon + "/";
+
+  return this;
 };
 
-var buildBaseUrl = function() {
+QueryBuilder.prototype.buildBaseUrl = function() {
   return config.host + ":" + config.port + config.apiBasePath;
 };
 
-var build = function() {
+QueryBuilder.prototype.build = function() {
   this.query += "data.json";
   return this.query;
 };
+
+module.exports = QueryBuilder;
