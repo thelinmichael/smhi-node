@@ -3,9 +3,9 @@ var Request = require("./smhi-request"),
 
 var SMHI = function(options) {};
 
-SMHI.prototype.getForecastForLatAndLong = function(lat, long) {
+SMHI.prototype.getForecastForLatAndLong = function(lat, lon) {
   var promise = new Promise(function(resolve, reject) {
-    Request(lat, long)
+    Request.make(lat, lon)
     .done(function(response) {
       resolve(response);
     })
