@@ -135,7 +135,11 @@ Forecast.prototype.isRaining = function() {
 };
 
 Forecast.prototype.isDrizzling = function() {
-  return this.pcat >= 4 && this.pcat <= 6;
+  return this.pcat >= 4 || this.pcat === 6;
+};
+
+Forecast.prototype.isFreezingRain = function() {
+  return this.pcat === 5;
 };
 
 Forecast.prototype.isFreezingDrizzle = function() {
