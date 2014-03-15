@@ -1,5 +1,4 @@
 var should = require("should"),
-    assert = require("assert"),
     unit = require("../src/smhi.js");
 
 describe("SMHI", function() {
