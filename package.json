@@ -1,10 +1,13 @@
 {
   "name" : "smhi-node",
-  "description" : "Node.js wrapper for the SMHI PMP API",
+  "version" : "0.0.1",
+  "description" : "Node.js wrapper for the SMHI API",
+  "author": "Michael Thelin",
+  "email" : "thelinmichael@gmail.com",
   "main" : "src/smhi.js",
   "dependencies" : {
     "sha1" : "1.1.x",
-    "needle" : "*",
+    "needle" : "0.6.x",
     "es6-promise" : "0.1.x"
   },
   "devDependencies" : {
@@ -18,5 +21,10 @@
     "grunt-contrib-watch": "0.5.x",
     "grunt-contrib-jshint" : "0.7.1",
     "grunt-simple-mocha" : "0.4.x"
+  },
+  "repository" :
+  {
+    "type" : "git",
+    "url" : "https://github.com/thelinmichael/smhi-node.git"
   }
 }
