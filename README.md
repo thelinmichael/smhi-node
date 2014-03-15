@@ -6,7 +6,7 @@ Given latitude and longitude, SMHI's API returns weather forecast information fr
 Example response for Stockholm:
 
 [http://opendata-download-metfcst.smhi.se/api/category/pmp1g/version/1/geopoint/lat/58.59/lon/16.18/data.json](http://opendata-download-metfcst.smhi.se/api/category/pmp1g/version/1/geopoint/lat/58.59/lon/16.18/data.json)
-```json
+```
 {
   lat: 58.548703,
   lon: 16.155116,
