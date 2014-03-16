@@ -125,7 +125,7 @@ npm install smhi-node --save
  * Get weather forecasts for a specified coordinate.
  * @param {Number} lat The latitude of the location you want forecasts for
  * @param {Number} lon The longitude of the location you want forecasts for
- * @returns {Promise} Returns a [ES6 compatible promise](http://www.html5rocks.com/en/tutorials/es6/promises/) that resolves to a {SMHI Response} object
+ * @returns {Promise} Returns a ES6 compatible promise that resolves to a {SMHI Response} object
  */
 SMHI.getForecastForLatAndLong(lat, lon)
 ```
