@@ -1,7 +1,7 @@
-**smhi-node** a JavaScript wrapper for the [Swedish Meteorological and Hydrological Institute](http://www.smhi.se/en)'s (SMHI) [weather forecast API](http://www.smhi.se/klimatdata/Oppna-data/Meteorologiska-data/api-for-vaderprognosdata-1.34233) (text in Swedish), and is packaged as a node module.
+**smhi-node** is a JavaScript wrapper for the [Swedish Meteorological and Hydrological Institute](http://www.smhi.se/en)'s (SMHI) [weather forecast API](http://www.smhi.se/klimatdata/Oppna-data/Meteorologiska-data/api-for-vaderprognosdata-1.34233) (text in Swedish), packaged as a node module.
 
-### SMHI's API service
-Given latitude and longitude, SMHI's API returns weather forecast information from the current time to ten days into the future. Forecasts include properties such as direction and velocity of winds, type and intensity of percipitation, and temperature. Full list [here](http://www.smhi.se/polopoly_fs/1.34248!Parameterlista%20API%20ver%20131118.xlsx) (Excel file).
+### SMHI's weather API
+Given latitude and longitude, SMHI's API returns weather forecast information from the time of the request to ten days into the future. Forecasts include properties such as direction and velocity of winds, type and intensity of precipitation, and temperature. Full list of properties can be found [here](http://www.smhi.se/polopoly_fs/1.34248!Parameterlista%20API%20ver%20131118.xlsx) (Excel file). Hourly forecasts for the first days, but become less regular as time approaches ten days from the request.
 
 Example response for Stockholm:
 
@@ -48,13 +48,13 @@ Example response for Stockholm:
     pis: 0,
     pcat: 3
     },
-    ... (and so on, ten days forward with decreasing granularity)
+    ... (and so on, ten days into the future)
 }
 ```
 
 
 ### Examples
-Some examples using the wrapper, making the same query and getting the same response as above. It uses the same [promises that's in EcmaScript 6](http://www.html5rocks.com/en/tutorials/es6/promises/).
+Below are two examples of wrapper use cases, using same query and getting the same response shown above.
 
 #### Will it rain during the next hour?
 
@@ -113,6 +113,11 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
 });
 ```
 
+### Installation
+```
+npm install smhi-node --save
+```
+
 ### Reference
 #### SMHI
 ```javascript
@@ -120,7 +125,7 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
  * Get weather forecasts for a specified coordinate.
  * @param {Number} lat The latitude of the location you want forecasts for
  * @param {Number} lon The longitude of the location you want forecasts for
- * @returns {Promise} Returns a promise that resolves to a {SMHI Response} object
+ * @returns {Promise} Returns a [ES6 compatible promise](http://www.html5rocks.com/en/tutorials/es6/promises/) that resolves to a {SMHI Response} object
  */
 SMHI.getForecastForLatAndLong(lat, lon)
 ```
@@ -139,31 +144,148 @@ getForecasts()
 There's no need to create a new Forecast with its constructor.
 
 ```javascript
-  getLatitude()       // Latitude of the closest measuring node
-  getLongitude()      // Longitude of the nearest measuring node
-  getReferenceTime()  // Time when the forecast request was made
-  getTime()           // Time of the forecast
-  getValidTime()      // Same as above^
-  getMeanSeaLevel()   // Pressure at sealevel in hPa
-  getTemperature()    // Temperature in Celsius
-  getVisibility()     // Visibility in kilometers, one decimal
-  getWindDirection()  // Direction in degrees (integers)
-  getWindVelocity()            // Velocity in m/s (one decimal)
-  getRelativeHumidity()        // Humidity in % (integers)
-  getThunderstormProbability() // Probability in % (integers)
-  getTotalCloudCover()         // Total cloud cover in parts of eights (0-8)
-  getLowCloudCover()     // Low cloud cover in parts of eights (0-8)
-  getMediumCloudCover()  // Medium cloud cover in parts of eights (0-8)
-  getHighCloudCover()    // High cloud cover in parts of eights (0.8)
-  getGust()              // Wind gust in m/s (one decimal)
-  getTotalPrecipitationIntensity() // Rain, millimeter per hour (one decimal)
-  getSnowPrecipitationIntensity()  // Snow, millimeter per hour (melted snow, one decimal)
-  getPrecipitationCategory() // SMHI precipitation category
-  noPercipitation()          // True if no snow or rain (category 0)
-  isSnowing()                // True if snowing (category 1), or snow mixed with rain (category 2)
-  isSnowingAndRaining()      // True if snowing and raining (category 2)
-  isRaining()  // True if snowing and raining (category 2), raining (categories 3 and 5), or drizzling (categories 4, 6)
-  isDrizzling()              // True if drizzling (category 4, 6)
-  isFreezingRain()           // True if freezing rain (category 5)
-  isFreezingDrizzle()        // True if freezing drizzle (category 6)
+  /*
+   * @returns {Number} Latitude of the closest measuring node
+   */
+  getLatitude()
+
+  /*
+   * @returns {Number} Longitude of the nearest measuring node
+   */
+  getLongitude()
+
+  /*
+   * @returns {String} Time when the forecast request was made
+   */
+  getReferenceTime()
+
+  /*
+   * @returns {String} Time of the forecast
+   */
+  getValidTime()
+
+  /*
+   * @returns {Number} Air pressure at sealevel in hPa
+   */
+  getMeanSeaLevel()
+
+  /*
+   * @returns {Number} Temperature in Celsius
+   */
+  getTemperature()
+
+  /*
+   * @returns {Number} Visibility in kilometers, one decimal
+   */
+  getVisibility()
+
+  /*
+   * @returns {Number} Wind direction (Degrees, one decimal)
+   */
+  getWindDirection()
+
+  /*
+   * @returns {Number} Wind Velocity (m/s, one decimal)
+   */
+  getWindVelocity()
+
+  /*
+   * @returns {Number} Wind gust (m/s, one decimal)
+   */
+  getGust()
+
+  /*
+   * @returns {Number} Relative humidity (%, integers)
+   */
+  getRelativeHumidity()
+
+  /*
+   * @returns {Number} Probability of thunderstorm (%, integers)
+   */
+  getThunderstormProbability()
+
+  /*
+   * @returns {Number} Total cloud cover (0-8)
+   */
+  getTotalCloudCover()
+
+  /*
+   * @returns {Number} Low cloud cover (0-8)
+   */
+  getLowCloudCover()
+
+  /*
+   * @returns {Number} Medium cloud cover (0-8)
+   */
+  getMediumCloudCover()
+
+  /*
+   * @returns {Number} High cloud cover (0-8)
+   */
+  getHighCloudCover()
+
+  /*
+   * @returns {Number} Rain (millimeter per hour, one decimal)
+   */
+  getTotalPrecipitationIntensity()
+
+  /*
+   * @returns {Number} Snow (millimeter per hour of melted snow, one decimal)
+   */
+  getSnowPrecipitationIntensity()
+
+  /*
+   * @returns {Number} SMHI internal precipitation category (0-6)
+   * 0: No precipitation
+   * 1: Snow
+   * 2: Mixed snow and rain
+   * 3: Rain
+   * 4: Drizzle
+   * 5: Freezing rain (hail)
+   * 6: Freezing drizzle
+   */
+  getPrecipitationCategory()
+
+  /*
+   * @returns {Boolean} True if no snow or rain (precipitation category 0),
+   * otherwise false
+   */
+  noPercipitation()
+
+  /*
+   * @returns {Boolean} True if snowing (category 1) or snow mixed with rain (category 2),
+   * otherwise false
+   */
+  isSnowing()
+
+  /*
+   * @returns {Boolean} True if snowing and raining (category 2)
+   * otherwise false
+   */
+  isSnowingAndRaining()
+
+  /*
+   * @returns {Boolean} True if snowing and raining (category 2),
+   * raining (categories 3 and 5) or drizzling (categories 4, 6),
+   * otherwise false
+   */
+  isRaining()
+
+  /*
+   * @returns {Boolean} True if drizzling (category 4, 6), otherwise false
+   */
+  isDrizzling()
+
+  /*
+   * @returns {Boolean} True if freezing rain (category 5), otherwise false
+   */
+  isFreezingRain()
+
+  /*
+   * @returns {Boolean} True if freezing drizzle (category 6), otherwise false
+   */
+  isFreezingDrizzle()
 ```
+
+### To do
+Cache results

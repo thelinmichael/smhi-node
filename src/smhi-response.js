@@ -50,10 +50,6 @@ Forecast.prototype.getReferencetime = function() {
   return this.referenceTime;
 };
 
-Forecast.prototype.getTime = function() {
-  return this.getValidTime();
-};
-
 Forecast.prototype.getValidTime = function() {
   return this.validTime;
 };
