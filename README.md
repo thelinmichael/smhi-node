@@ -285,10 +285,31 @@ There's no need to create a new Forecast with its constructor.
   noPrecipitation()
 ```
 
+## Development
+### Prerequisites
+
+```
+# Clone the repository
+https://github.com/thelinmichael/smhi-node.git
+```
+
+```
+# Install Grunt in order to tasks
+npm install -g grunt-cli
+```
+
+```
+# Install dependencies
+npm install
+```
+
+### Tests
+```
+# Run tests and Javascript linting by running
+grunt
+```
+
 ## To do
 + Cache results (waiting for SMHI regarding how often the forecasts are updated)
-+ Create an end-to-end-test that uses mocks
-+ Group non-mocked end-to-end-test so that it only runs when specified by user
-+ Add development part ot the README
-+ Ability to get coordinates of closest node given coordinates
-+ Return a Javascript Date instead of just a String
++ Ability to get coordinates of closest grid node given latitude and longitude
++ Return a Javascript Date instead of just a String for reference time and forecast time
