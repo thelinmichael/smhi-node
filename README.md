@@ -57,7 +57,7 @@ Example response for Stockholm:
 ```
 
 
-### Wrapper Examples
+## Wrapper Examples
 Below are two examples of wrapper use cases, using same query and getting the same response shown above.
 
 ### Will it rain during the next hour?
@@ -117,11 +117,6 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
 });
 ```
 
-## Installation
-```
-npm install smhi-node --save
-```
-
 ## Wrapper Reference
 ### SMHI
 ```javascript
@@ -135,7 +130,8 @@ SMHI.getForecastForLatAndLong(lat, lon)
 ```
 
 ### SMHI Response
-There's no need to create a new SMHI Response with its constructor.
+There's no need to create a new SMHI Response with its constructor. Responses are returned from  SMHI, when the a request has been made successfully using getForecastForLatAndLong.
+
 ```javascript
 /**
  * Get the forecasts that is contained within the SMHI Response.
@@ -173,7 +169,7 @@ getReferenceTime()
 ```
 
 ### Forecast
-There's no need to create a new Forecast with its constructor.
+There's no need to create a new Forecast with its constructor. Forecasts are retrieved from the SMHI Response with it's getForecasts() method.
 
 ```javascript
   /*
@@ -285,12 +281,19 @@ There's no need to create a new Forecast with its constructor.
   noPrecipitation()
 ```
 
+## Installation
+
+```
+# In the directory of the project that will use smhi-node
+npm install smhi-node --save
+```
+
 ## Development
 ### Prerequisites
 
 ```
 # Clone the repository
-https://github.com/thelinmichael/smhi-node.git
+git clone https://github.com/thelinmichael/smhi-node.git
 ```
 
 ```
