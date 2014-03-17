@@ -18,4 +18,21 @@ SMHI.getForecastForLatAndLong = function(lat, lon) {
   return promise;
 };
 
+SMHI.getClosestGridpointForLatAndLong = function(lat, lon) {
+  var promise = new Promise(function(resolve, reject) {
+    Request.make(lat, lon).then(
+      function(response) {
+        resolve({
+          lat : response.getJSON().lat,
+          lon : response.getJSON().lon
+        });
+      },
+      function(error) {
+        reject(error);
+      }
+    );
+  });
+  return promise;
+};
+
 module.exports = SMHI;

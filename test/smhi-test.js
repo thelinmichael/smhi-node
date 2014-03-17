@@ -56,13 +56,30 @@ describe("SMHI", function() {
   });
 
   it("should fail if response statuscode is not a 400, since the coordinates are out of bounds", function(done) {
-  var SMHI = require("../src/smhi"),
+    var SMHI = require("../src/smhi"),
     latitude = 92, // Impossible coordinate
     longitude = 0;
 
      SMHI.getForecastForLatAndLong(latitude, longitude).then(
       function(response) {
         done({ error: "Should have failed" });
+      },
+      function(response) {
+        response.error.statusCode.should.equal(400);
+        done();
+      });
+  });
+
+  it("should get the closest gridpoint to some coordinate", function(done) {
+    var SMHI = require("../src/smhi"),
+        latitude = 59, // Pretty much Stockholm
+        longitude = 16;
+
+     SMHI.getClosestGridpointForLatAndLong(latitude, longitude).then(
+      function(response) {
+        response.lat.should.equal(58.994726);
+        response.lon.should.equal(16.092916);
+        done();
       },
       function(response) {
         response.error.statusCode.should.equal(400);

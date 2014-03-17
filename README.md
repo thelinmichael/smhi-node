@@ -127,6 +127,15 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
  * @returns {Promise} Returns a ES6 compatible promise that resolves to a {SMHI Response} object
  */
 SMHI.getForecastForLatAndLong(lat, lon)
+
+/**
+ * Get coordinates for the closest gridpoint.
+ * @param {Number} lat The latitude
+ * @param {Number} lon The longitude
+ * @returns {Promise} Returns a ES6 compatible promise that resolves to an
+ * object with a {Number} lat and {Number} lon property.
+ */
+getClosestGridpointForLatAndLong(lat, lon)
 ```
 
 ### SMHI Response
@@ -172,113 +181,113 @@ getReferenceTime()
 There's no need to create a new Forecast with its constructor. Forecasts are retrieved from the SMHI Response with it's getForecasts() method.
 
 ```javascript
-  /*
-   * @returns {Number} Latitude of the closest measuring node
-   */
-  getLatitude()
+/*
+ * @returns {Number} Latitude of the closest measuring node
+ */
+getLatitude()
 
-  /*
-   * @returns {Number} Longitude of the nearest measuring node
-   */
-  getLongitude()
+/*
+ * @returns {Number} Longitude of the nearest measuring node
+ */
+getLongitude()
 
-  /*
-   * @returns {String} Time when the forecast request was made
-   */
-  getReferenceTime()
+/*
+ * @returns {String} Time when the forecast request was made
+ */
+getReferenceTime()
 
-  /*
-   * @returns {String} Time of the forecast
-   */
-  getValidTime()
+/*
+ * @returns {String} Time of the forecast
+ */
+getValidTime()
 
-  /*
-   * @returns {Number} Air pressure at sealevel in hPa
-   */
-  getMeanSeaLevel()
+/*
+ * @returns {Number} Air pressure at sealevel in hPa
+ */
+getMeanSeaLevel()
 
-  /*
-   * @returns {Number} Temperature in Celsius
-   */
-  getTemperature()
+/*
+ * @returns {Number} Temperature in Celsius
+ */
+getTemperature()
 
-  /*
-   * @returns {Number} Visibility in kilometers, one decimal
-   */
-  getVisibility()
+/*
+ * @returns {Number} Visibility in kilometers, one decimal
+ */
+getVisibility()
 
-  /*
-   * @returns {Number} Wind direction (Degrees, one decimal)
-   */
-  getWindDirection()
+/*
+ * @returns {Number} Wind direction (Degrees, one decimal)
+ */
+getWindDirection()
 
-  /*
-   * @returns {Number} Wind Velocity (m/s, one decimal)
-   */
-  getWindVelocity()
+/*
+ * @returns {Number} Wind Velocity (m/s, one decimal)
+ */
+getWindVelocity()
 
-  /*
-   * @returns {Number} Wind gust (m/s, one decimal)
-   */
-  getGust()
+/*
+ * @returns {Number} Wind gust (m/s, one decimal)
+ */
+getGust()
 
-  /*
-   * @returns {Number} Relative humidity (%, integers)
-   */
-  getRelativeHumidity()
+/*
+ * @returns {Number} Relative humidity (%, integers)
+ */
+getRelativeHumidity()
 
-  /*
-   * @returns {Number} Probability of thunderstorm (%, integers)
-   */
-  getThunderstormProbability()
+/*
+ * @returns {Number} Probability of thunderstorm (%, integers)
+ */
+getThunderstormProbability()
 
-  /*
-   * @returns {Number} Total cloud cover (0-8)
-   */
-  getTotalCloudCover()
+/*
+ * @returns {Number} Total cloud cover (0-8)
+ */
+getTotalCloudCover()
 
-  /*
-   * @returns {Number} Low cloud cover (0-8)
-   */
-  getLowCloudCover()
+/*
+ * @returns {Number} Low cloud cover (0-8)
+ */
+getLowCloudCover()
 
-  /*
-   * @returns {Number} Medium cloud cover (0-8)
-   */
-  getMediumCloudCover()
+/*
+ * @returns {Number} Medium cloud cover (0-8)
+ */
+getMediumCloudCover()
 
-  /*
-   * @returns {Number} High cloud cover (0-8)
-   */
-  getHighCloudCover()
+/*
+ * @returns {Number} High cloud cover (0-8)
+ */
+getHighCloudCover()
 
-  /*
-   * @returns {Number} Rain (millimeter per hour, one decimal)
-   */
-  getTotalPrecipitationIntensity()
+/*
+ * @returns {Number} Rain (millimeter per hour, one decimal)
+ */
+getTotalPrecipitationIntensity()
 
-  /*
-   * @returns {Number} Snow (millimeter per hour of melted snow, one decimal)
-   */
-  getSnowPrecipitationIntensity()
+/*
+ * @returns {Number} Snow (millimeter per hour of melted snow, one decimal)
+ */
+getSnowPrecipitationIntensity()
 
-  /*
-   * @returns {Number} SMHI internal precipitation category (0-6)
-   * 0: No precipitation
-   * 1: Snow
-   * 2: Mixed snow and rain
-   * 3: Rain
-   * 4: Drizzle
-   * 5: Freezing rain
-   * 6: Freezing drizzle
-   */
-  getPrecipitationCategory()
+/*
+ * @returns {Number} SMHI internal precipitation category (0-6)
+ * 0: No precipitation
+ * 1: Snow
+ * 2: Mixed snow and rain
+ * 3: Rain
+ * 4: Drizzle
+ * 5: Freezing rain
+ * 6: Freezing drizzle
+ */
+getPrecipitationCategory()
 
-  /*
-   * @returns {Boolean} True if no snow or rain (precipitation category 0),
-   * otherwise false
-   */
-  noPrecipitation()
+/*
+ * @returns {Boolean} True if no snow or rain (precipitation category 0),
+ * otherwise false
+ */
+noPrecipitation()
 ```
 
 ## Installation
@@ -314,5 +323,4 @@ grunt
 
 ## To do
 + Cache results (waiting for SMHI regarding how often the forecasts are updated)
-+ Ability to get coordinates of closest grid node given latitude and longitude
 + Return a Javascript Date instead of just a String for reference time and forecast time
