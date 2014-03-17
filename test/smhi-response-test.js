@@ -32,7 +32,7 @@ describe("SMHI Response Objects", function() {
     firstForecast.getSnowPrecipitationIntensity().should.equal(0);
     firstForecast.getPrecipitationCategory().should.equal(3);
 
-    firstForecast.noPercipitation().should.equal(false);
+    firstForecast.noPrecipitation().should.equal(false);
     firstForecast.isSnowing().should.equal(false);
     firstForecast.isSnowingAndRaining().should.equal(false);
     firstForecast.isRaining().should.equal(true);

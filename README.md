@@ -250,7 +250,7 @@ There's no need to create a new Forecast with its constructor.
    * @returns {Boolean} True if no snow or rain (precipitation category 0),
    * otherwise false
    */
-  noPercipitation()
+  noPrecipitation()
 
   /*
    * @returns {Boolean} True if snowing (category 1) or snow mixed with rain (category 2),

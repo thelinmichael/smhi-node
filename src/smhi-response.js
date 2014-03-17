@@ -114,7 +114,7 @@ Forecast.prototype.getPrecipitationCategory = function() {
   return this.pcat;
 };
 
-Forecast.prototype.noPercipitation = function() {
+Forecast.prototype.noPrecipitation = function() {
   return this.pcat === 0;
 };
 
