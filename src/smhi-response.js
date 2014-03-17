@@ -11,12 +11,34 @@ var Response = function(error, body) {
   }
 };
 
-Response.prototype.getForecasts = function() {
-  return this.forecasts;
+Response.prototype.getLatitude = function() {
+  return this.body.lat;
+};
+
+Response.prototype.getLongitude = function() {
+  return this.body.lon;
+};
+
+Response.prototype.getReferencetime = function() {
+  return this.body.referenceTime;
 };
 
 Response.prototype.getJSON = function() {
   return this.body;
+};
+
+Response.prototype.getForecasts = function() {
+  return this.forecasts;
+};
+
+Response.PrecipitationCategory = {
+  NONE : 0,
+  SNOW : 1,
+  SNOW_MIXED_WITH_RAIN : 2,
+  RAIN : 3,
+  DRIZZLE : 4,
+  FREEZING_RAIN : 5,
+  FREEZING_DRIZZLE : 6
 };
 
 var createForecasts = function(body) {
@@ -117,16 +139,6 @@ Forecast.prototype.getSnowPrecipitationIntensity = function() {
 
 Forecast.prototype.getPrecipitationCategory = function() {
   return this.pcat;
-};
-
-Response.PrecipitationCategory = {
-  NONE : 0,
-  SNOW : 1,
-  SNOW_MIXED_WITH_RAIN : 2,
-  RAIN : 3,
-  DRIZZLE : 4,
-  FREEZING_RAIN : 5,
-  FREEZING_DRIZZLE : 6
 };
 
 module.exports = Response;

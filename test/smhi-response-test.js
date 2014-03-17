@@ -5,7 +5,6 @@ var should = require("should"),
 describe("SMHI Response Objects", function() {
 
   it("should fail if doesnt wrap all properties in a successful response from SMHIs API", function() {
-
     var unit = new Response(null, mockResponse);
     var forecasts = unit.getForecasts();
     forecasts.length.should.equal(77);
@@ -47,6 +46,13 @@ describe("SMHI Response Objects", function() {
     var unit = new Response(null, mockResponse);
     var json = unit.getJSON();
     mockResponse.should.equal(json);
+  });
+
+  it("should fail if the response doesn't include latitude, longitude and reference time", function() {
+    var unit = new Response(null, mockResponse);
+    unit.getLatitude().should.equal(58.548703);
+    unit.getLongitude().should.equal(16.155116);
+    unit.getReferencetime().should.equal("2014-03-14T20:00:00Z");
   });
 
 });

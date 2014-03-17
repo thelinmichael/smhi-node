@@ -143,6 +143,21 @@ There's no need to create a new SMHI Response with its constructor.
  */
 getForecasts()
 
+/*
+ * @returns {Number} Latitude of the closest measuring node
+ */
+getLatitude()
+
+/*
+ * @returns {Number} Longitude of the nearest measuring node
+ */
+getLongitude()
+
+/*
+ * @returns {String} Time when the forecast request was made
+ */
+getReferenceTime()
+
 /**
  * Enum for precipitation categories.
  * @enum {Number}
@@ -272,9 +287,9 @@ There's no need to create a new Forecast with its constructor.
 
 ## To do
 + Cache results (waiting for SMHI regarding how often the forecasts are updated)
-+ Add methods on SHMI Response to get Latitude, Longitude and Reference time
 + Create an end-to-end-test that uses mocks
 + Group non-mocked end-to-end-test so that it only runs when specified by user
 + Add development part ot the README
 + Add tests for errors (e.g. HTTP 400 - Field point out of bounds)
 + Ability to get coordinates of closest node given coordinates
++ Return a Javascript Date instead of just a String
