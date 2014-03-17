@@ -72,7 +72,7 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
     var forecasts = response.getForecasts();
     var nextHour = forecasts[0];
 
-    if (nextHour.getPrecipitationCategory().should.equal(SMHI.Response.PrecipitationCategory.RAIN)) {
+    if (nextHour.getPrecipitationCategory() === SMHI.Response.PrecipitationCategory.RAIN) {
       console.log("It will rain");
     } else {
       console.log("Yay, it won't rain!");
@@ -305,7 +305,7 @@ npm install
 
 ### Tests
 ```
-# Run tests and Javascript linting by running
+# Run tests and Javascript linting
 grunt
 ```
 
