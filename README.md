@@ -2,7 +2,6 @@
 
 **smhi-node** is a JavaScript wrapper for the [Swedish Meteorological and Hydrological Institute](http://www.smhi.se/en)'s (SMHI) [weather forecast API](http://www.smhi.se/klimatdata/Oppna-data/Meteorologiska-data/api-for-vaderprognosdata-1.34233) (text in Swedish), packaged as a Node.js module.
 
-## Status
 [![Build Status](https://travis-ci.org/thelinmichael/smhi-node.png?branch=master)](https://travis-ci.org/thelinmichael/smhi-node)
 
 ## SMHI's weather API
@@ -272,9 +271,9 @@ There's no need to create a new Forecast with its constructor.
 ```
 
 ## To do
-Cache results
-Add method on SMHI Response that return the exact response from SMHI
-Add methods on SHMI Response to get Latitude, Longitude and Reference time
-Create an end-to-end-test that uses mocks
-Group non-mocked end-to-end-test so that it only runs when specified by user
-Add development part ot the README
++ Cache results
++ Add method on SMHI Response that return the exact response from SMHI
++ Add methods on SHMI Response to get Latitude, Longitude and Reference time
++ Create an end-to-end-test that uses mocks
++ Group non-mocked end-to-end-test so that it only runs when specified by user
++ Add development part ot the README
