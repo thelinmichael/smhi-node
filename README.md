@@ -1,4 +1,4 @@
-**smhi-node** is a JavaScript wrapper for the [Swedish Meteorological and Hydrological Institute](http://www.smhi.se/en)'s (SMHI) [weather forecast API](http://www.smhi.se/klimatdata/Oppna-data/Meteorologiska-data/api-for-vaderprognosdata-1.34233) (text in Swedish), packaged as a node module.
+**smhi-node** is a JavaScript wrapper for the [Swedish Meteorological and Hydrological Institute](http://www.smhi.se/en)'s (SMHI) [weather forecast API](http://www.smhi.se/klimatdata/Oppna-data/Meteorologiska-data/api-for-vaderprognosdata-1.34233) (text in Swedish), packaged as a Node.js module.
 
 ### SMHI's weather API
 Given latitude and longitude, SMHI's API returns weather forecast information from the time of the request to ten days into the future. Forecasts include properties such as direction and velocity of winds, type and intensity of precipitation, and temperature. Full list of properties can be found [here](http://www.smhi.se/polopoly_fs/1.34248!Parameterlista%20API%20ver%20131118.xlsx) (Excel file). Hourly forecasts for the first days, but become less regular as time approaches ten days from the request.
@@ -118,7 +118,7 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
 npm install smhi-node --save
 ```
 
-### Reference
+### Wrapper Reference
 #### SMHI
 ```javascript
 /**
@@ -289,3 +289,10 @@ There's no need to create a new Forecast with its constructor.
 
 ### To do
 Cache results
+Add method on SMHI Response that return the exact response from SMHI
+Add methods on SHMI Response to get Latitude, Longitude and Reference time
+Rewrite methods that validates what kind of weather it is based on category
+Create an end-to-end-test that uses mocks
+Group non-mocked end-to-end-test so that it only runs when specified by user
+Add development part ot the README
+Add Travis CI
