@@ -1,6 +1,6 @@
 {
   "name" : "smhi-node",
-  "version" : "0.0.2",
+  "version" : "0.0.3",
   "description" : "Node.js wrapper for the SMHI API",
   "author": "Michael Thelin",
   "email" : "thelinmichael@gmail.com",
