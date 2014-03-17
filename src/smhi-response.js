@@ -3,6 +3,7 @@ var Response = function(error, body) {
     this.error = error;
   } else {
     try {
+      this.body = body;
       this.forecasts = createForecasts(body);
     } catch (exception) {
       this.error = "Unexpected error when parsing response from SMHI";
@@ -12,6 +13,10 @@ var Response = function(error, body) {
 
 Response.prototype.getForecasts = function() {
   return this.forecasts;
+};
+
+Response.prototype.getJSON = function() {
+  return this.body;
 };
 
 var createForecasts = function(body) {
