@@ -1,6 +1,11 @@
+## About
+
 **smhi-node** is a JavaScript wrapper for the [Swedish Meteorological and Hydrological Institute](http://www.smhi.se/en)'s (SMHI) [weather forecast API](http://www.smhi.se/klimatdata/Oppna-data/Meteorologiska-data/api-for-vaderprognosdata-1.34233) (text in Swedish), packaged as a Node.js module.
 
-### SMHI's weather API
+## Status
+[![Build Status](https://travis-ci.org/thelinmichael/smhi-node.png?branch=master)](https://travis-ci.org/thelinmichael/smhi-node)
+
+## SMHI's weather API
 Given latitude and longitude, SMHI's API returns weather forecast information from the time of the request to ten days into the future. Forecasts include properties such as direction and velocity of winds, type and intensity of precipitation, and temperature. Full list of properties can be found [here](http://www.smhi.se/polopoly_fs/1.34248!Parameterlista%20API%20ver%20131118.xlsx) (Excel file). Hourly forecasts for the first days, but become less regular as time approaches ten days from the request.
 
 Example response for Stockholm:
@@ -53,10 +58,10 @@ Example response for Stockholm:
 ```
 
 
-### Examples
+### Wrapper Examples
 Below are two examples of wrapper use cases, using same query and getting the same response shown above.
 
-#### Will it rain during the next hour?
+### Will it rain during the next hour?
 
 ```javascript
 var SMHI = require("smhi-node"),
@@ -80,7 +85,7 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
 });
 ```
 
-#### What will be the highest and lowest temperature for the next ten days?
+### What will be the highest and lowest temperature for the next ten days?
 ```javascript
 var SMHI = require("smhi-node"),
     latitude = 58.59,
@@ -113,13 +118,13 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
 });
 ```
 
-### Installation
+## Installation
 ```
 npm install smhi-node --save
 ```
 
-### Wrapper Reference
-#### SMHI
+## Wrapper Reference
+### SMHI
 ```javascript
 /**
  * Get weather forecasts for a specified coordinate.
@@ -130,7 +135,7 @@ npm install smhi-node --save
 SMHI.getForecastForLatAndLong(lat, lon)
 ```
 
-#### SMHI Response
+### SMHI Response
 There's no need to create a new SMHI Response with its constructor.
 ```javascript
 /**
@@ -153,7 +158,7 @@ getForecasts()
   FREEZING_DRIZZLE (6)
 ```
 
-#### Forecast
+### Forecast
 There's no need to create a new Forecast with its constructor.
 
 ```javascript
@@ -266,11 +271,10 @@ There's no need to create a new Forecast with its constructor.
   noPrecipitation()
 ```
 
-### To do
+## To do
 Cache results
 Add method on SMHI Response that return the exact response from SMHI
 Add methods on SHMI Response to get Latitude, Longitude and Reference time
 Create an end-to-end-test that uses mocks
 Group non-mocked end-to-end-test so that it only runs when specified by user
 Add development part ot the README
-Add Travis CI
