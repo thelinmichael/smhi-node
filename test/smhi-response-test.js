@@ -30,13 +30,17 @@ describe("SMHI Response Objects", function() {
     firstForecast.getGust().should.equal(10.2);
     firstForecast.getTotalPrecipitationIntensity().should.equal(1.7);
     firstForecast.getSnowPrecipitationIntensity().should.equal(0);
-    firstForecast.getPrecipitationCategory().should.equal(3);
-
-    firstForecast.noPrecipitation().should.equal(false);
-    firstForecast.isSnowing().should.equal(false);
-    firstForecast.isSnowingAndRaining().should.equal(false);
-    firstForecast.isRaining().should.equal(true);
-    firstForecast.isDrizzling().should.equal(false);
-    firstForecast.isFreezingDrizzle().should.equal(false);
+    firstForecast.getPrecipitationCategory().should.equal(Response.PrecipitationCategory.RAIN);
   });
+
+  it("should fail if the precipitation categories don't match", function() {
+    Response.PrecipitationCategory.NONE.should.equal(0);
+    Response.PrecipitationCategory.SNOW.should.equal(1);
+    Response.PrecipitationCategory.SNOW_MIXED_WITH_RAIN.should.equal(2);
+    Response.PrecipitationCategory.RAIN.should.equal(3);
+    Response.PrecipitationCategory.DRIZZLE.should.equal(4);
+    Response.PrecipitationCategory.FREEZING_RAIN.should.equal(5);
+    Response.PrecipitationCategory.FREEZING_DRIZZLE.should.equal(6);
+  });
+
 });

@@ -114,32 +114,14 @@ Forecast.prototype.getPrecipitationCategory = function() {
   return this.pcat;
 };
 
-Forecast.prototype.noPrecipitation = function() {
-  return this.pcat === 0;
-};
-
-Forecast.prototype.isSnowing = function() {
-  return this.pcat === 1 || this.pcat === 2;
-};
-
-Forecast.prototype.isSnowingAndRaining = function() {
-  return this.pcat === 2;
-};
-
-Forecast.prototype.isRaining = function() {
-  return this.pcat >= 2 || this.pcat <= 6;
-};
-
-Forecast.prototype.isDrizzling = function() {
-  return this.pcat >= 4 || this.pcat === 6;
-};
-
-Forecast.prototype.isFreezingRain = function() {
-  return this.pcat === 5;
-};
-
-Forecast.prototype.isFreezingDrizzle = function() {
-  return this.pcat === 6;
+Response.PrecipitationCategory = {
+  NONE : 0,
+  SNOW : 1,
+  SNOW_MIXED_WITH_RAIN : 2,
+  RAIN : 3,
+  DRIZZLE : 4,
+  FREEZING_RAIN : 5,
+  FREEZING_DRIZZLE : 6
 };
 
 module.exports = Response;

@@ -1,4 +1,5 @@
 var Request = require("./smhi-request"),
+    Response = require("./smhi-response"),
     Promise = require("es6-promise").Promise;
 
 var SMHI = function() {};

@@ -68,7 +68,7 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
     var forecasts = response.getForecasts();
     var nextHour = forecasts[0];
 
-    if (nextHour.isRaining()) {
+    if (nextHour.getPrecipitationCategory().should.equal(SMHI.Response.PrecipitationCategory.RAIN)) {
       console.log("It will rain");
     } else {
       console.log("Yay, it won't rain!");
@@ -103,9 +103,9 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
     });
 
     // Highest temperature: 9.6°C on 2014-03-22T12:00:00Z
-    console.log("Highest temperature: " + records.highest.getTemperature() + "°C on " + records.highest.getTime());
+    console.log("Highest temperature: " + records.highest.getTemperature() + "°C on " + records.highest.getValidTime());
     // Lowest temperature: 5.3°C on 2014-03-14T21:00:00Z
-    console.log("Lowest temperature: " + records.lowest.getTemperature() + "°C on " + records.lowest.getTime()); // 5.3°C
+    console.log("Lowest temperature: " + records.lowest.getTemperature() + "°C on " + records.lowest.getValidTime()); // 5.3°C
   },
   function(error) {
      console.log("I didn't manage to find out, sorry.", error);
@@ -138,6 +138,19 @@ There's no need to create a new SMHI Response with its constructor.
  * @returns {Forecast[]} The forecasts
  */
 getForecasts()
+
+/**
+ * Enum for precipitation categories.
+ * @enum {Number}
+ */
+ PrecipitationCategory
+  NONE (0)
+  SNOW (1)
+  SNOW_MIXED_WITH_RAIN (2)
+  RAIN (3)
+  DRIZZLE (4)
+  FREEZING_RAIN (5)
+  FREEZING_DRIZZLE (6)
 ```
 
 #### Forecast
@@ -241,7 +254,7 @@ There's no need to create a new Forecast with its constructor.
    * 2: Mixed snow and rain
    * 3: Rain
    * 4: Drizzle
-   * 5: Freezing rain (hail)
+   * 5: Freezing rain
    * 6: Freezing drizzle
    */
   getPrecipitationCategory()
@@ -251,47 +264,12 @@ There's no need to create a new Forecast with its constructor.
    * otherwise false
    */
   noPrecipitation()
-
-  /*
-   * @returns {Boolean} True if snowing (category 1) or snow mixed with rain (category 2),
-   * otherwise false
-   */
-  isSnowing()
-
-  /*
-   * @returns {Boolean} True if snowing and raining (category 2)
-   * otherwise false
-   */
-  isSnowingAndRaining()
-
-  /*
-   * @returns {Boolean} True if snowing and raining (category 2),
-   * raining (categories 3 and 5) or drizzling (categories 4, 6),
-   * otherwise false
-   */
-  isRaining()
-
-  /*
-   * @returns {Boolean} True if drizzling (category 4, 6), otherwise false
-   */
-  isDrizzling()
-
-  /*
-   * @returns {Boolean} True if freezing rain (category 5), otherwise false
-   */
-  isFreezingRain()
-
-  /*
-   * @returns {Boolean} True if freezing drizzle (category 6), otherwise false
-   */
-  isFreezingDrizzle()
 ```
 
 ### To do
 Cache results
 Add method on SMHI Response that return the exact response from SMHI
 Add methods on SHMI Response to get Latitude, Longitude and Reference time
-Rewrite methods that validates what kind of weather it is based on category
 Create an end-to-end-test that uses mocks
 Group non-mocked end-to-end-test so that it only runs when specified by user
 Add development part ot the README
