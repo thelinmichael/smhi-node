@@ -13,7 +13,7 @@ Request.make = function(lat, lon) {
       if (!error && response.statusCode == 200) {
         resolve(new Response(null, body));
       } else {
-        reject(new Response(error));
+        reject(new Response(response));
       }
     });
   });

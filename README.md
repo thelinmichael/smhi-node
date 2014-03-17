@@ -290,6 +290,5 @@ There's no need to create a new Forecast with its constructor.
 + Create an end-to-end-test that uses mocks
 + Group non-mocked end-to-end-test so that it only runs when specified by user
 + Add development part ot the README
-+ Add tests for errors (e.g. HTTP 400 - Field point out of bounds)
 + Ability to get coordinates of closest node given coordinates
 + Return a Javascript Date instead of just a String

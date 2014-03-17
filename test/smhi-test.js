@@ -17,8 +17,8 @@ describe("SMHI", function() {
         forecasts[0].getLongitude().should.equal(16.155116); // closest node
         done();
       },
-      function(error) {
-        done(error);
+      function(response) {
+        done(response);
       });
   });
 
@@ -50,8 +50,24 @@ describe("SMHI", function() {
         records.highest.getTemperature().should.not.be.lessThan(records.lowest.getTemperature());
         done();
       },
-      function(error) {
-        done(error);
+      function(response) {
+        done(response);
       });
   });
+
+  it("should fail if response statuscode is not a 400, since the coordinates are out of bounds", function(done) {
+  var SMHI = require("../src/smhi"),
+    latitude = 92, // Impossible coordinate
+    longitude = 0;
+
+     SMHI.getForecastForLatAndLong(latitude, longitude).then(
+      function(response) {
+        done({ error: "Should have failed" });
+      },
+      function(response) {
+        response.error.statusCode.should.equal(400);
+        done();
+      });
+  });
+
 });
