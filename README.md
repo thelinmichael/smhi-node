@@ -119,12 +119,15 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
 
 ## Wrapper Reference
 ### SMHI
+There are no methods on this prototype, so there's no need to instantiate an SMHI object.
+
 ```javascript
 /**
  * Get weather forecasts for a specified coordinate.
  * @param {Number} lat The latitude of the location you want forecasts for
  * @param {Number} lon The longitude of the location you want forecasts for
  * @returns {Promise} Returns a ES6 compatible promise that resolves to a {SMHI Response} object
+ * if the request is successful. Otherwise, it rejects the promise.
  */
 SMHI.getForecastForLatAndLong(lat, lon)
 
@@ -132,14 +135,14 @@ SMHI.getForecastForLatAndLong(lat, lon)
  * Get coordinates for the closest gridpoint.
  * @param {Number} lat The latitude
  * @param {Number} lon The longitude
- * @returns {Promise} Returns a ES6 compatible promise that resolves to an
- * object with a {Number} lat and {Number} lon property.
+ * @returns {Promise} Returns a ES6 compatible promise that resolves to an object with a {Number} lat
+ * and {Number} lon property, if successful. Otherwise it rejects the promise.
  */
-getClosestGridpointForLatAndLong(lat, lon)
+SMHI.getClosestGridpointForLatAndLong(lat, lon)
 ```
 
 ### SMHI Response
-There's no need to create a new SMHI Response with its constructor. Responses are returned from  SMHI, when the a request has been made successfully using getForecastForLatAndLong.
+There's no need to create a new SMHI Response with its constructor. Responses are returned from SMHI, when a request has been made successfully using getForecastForLatAndLong.
 
 ```javascript
 /**
