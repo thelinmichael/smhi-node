@@ -13,8 +13,8 @@ describe("SMHI", function() {
         should.exist(forecasts);
         should.exist(forecasts.length);
         forecasts.length.should.not.equal(0);
-        forecasts[0].getLatitude().should.equal(58.548703); // closest node
-        forecasts[0].getLongitude().should.equal(16.155116); // closest node
+        forecasts[0].getLatitude().should.equal(58.638217); // closest node
+        forecasts[0].getLongitude().should.equal(16.102653); // closest node
         done();
       },
       function(response) {
@@ -77,8 +77,8 @@ describe("SMHI", function() {
 
      SMHI.getClosestGridpointForLatAndLong(latitude, longitude).then(
       function(response) {
-        response.lat.should.equal(58.994726);
-        response.lon.should.equal(16.092916);
+        response.lat.should.equal(59.0397);
+        response.lon.should.equal(15.921284);
         done();
       },
       function(response) {
