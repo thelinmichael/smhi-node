@@ -1,29 +1,25 @@
 {
   "name" : "smhi-node",
-  "version" : "0.0.5",
+  "version" : "0.0.6",
   "description" : "Node.js wrapper for the SMHI API",
   "author": "Michael Thelin",
   "email" : "thelinmichael@gmail.com",
   "main" : "src/smhi.js",
   "dependencies" : {
-    "sha1" : "1.1.x",
     "needle" : "0.6.x",
     "es6-promise" : "0.1.x"
   },
   "devDependencies" : {
-    "express" : "3.4.x",
     "mocha" : "1.x",
     "should" : "3.x",
     "grunt": "~0.4.1",
     "load-grunt-tasks": "0.1.x",
-    "grunt-exec": "0.4.x",
     "grunt-cli" : "0.1.11",
     "grunt-contrib-watch": "0.5.x",
     "grunt-contrib-jshint" : "0.7.1",
     "grunt-simple-mocha" : "0.4.x"
   },
-  "repository" :
-  {
+  "repository" : {
     "type" : "git",
     "url" : "https://github.com/thelinmichael/smhi-node.git"
   }
