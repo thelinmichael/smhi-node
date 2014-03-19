@@ -337,6 +337,3 @@ getPrecipitationCategory()
  */
 noPrecipitation()
 ```
-
-## To do
-+ Return a Javascript Date instead of just a String for reference time and forecast time
