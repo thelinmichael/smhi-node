@@ -2,6 +2,8 @@
 
 **smhi-node** is a JavaScript wrapper for the [Swedish Meteorological and Hydrological Institute](http://www.smhi.se/en)'s (SMHI) [weather forecast API](http://www.smhi.se/klimatdata/Oppna-data/Meteorologiska-data/api-for-vaderprognosdata-1.34233) (text in Swedish), packaged as a Node.js module.
 
+Since SMHI updates it's forecasts at least six times a day, this wrapper caches the responses for 15 minutes by default. This is however configurable in the config.json file in the root folder.
+
 [![Build Status](https://travis-ci.org/thelinmichael/smhi-node.png?branch=master)](https://travis-ci.org/thelinmichael/smhi-node)
 
 ## SMHI's weather API
@@ -117,6 +119,44 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
 });
 ```
 
+## Installation
+
+```
+# In the directory of the project that will use smhi-node
+npm install smhi-node --save
+```
+
+## Configuration
+
+```
+# config.json
+ "cacheTTL" : 900 // Default 900 seconds (15 minutes). 0 turns off caching.
+```
+
+## Development
+### Prerequisites
+
+```
+# Clone the repository
+git clone https://github.com/thelinmichael/smhi-node.git
+```
+
+```
+# Install Grunt to be able to run tasks
+npm install -g grunt-cli
+```
+
+```
+# Install dependencies
+npm install
+```
+
+### Tests
+```
+# Run tests and Javascript linting
+grunt
+```
+
 ## Wrapper Reference
 ### SMHI
 There are no methods on this prototype, so there's no need to instantiate an SMHI object.
@@ -165,6 +205,11 @@ getLongitude()
  * @returns {String} Time when the forecast request was made
  */
 getReferenceTime()
+
+/*
+ * @returns {Object} The parsed JSON response from SMHI's server
+ */
+getJSON()
 
 /**
  * Enum for precipitation categories.
@@ -293,37 +338,5 @@ getPrecipitationCategory()
 noPrecipitation()
 ```
 
-## Installation
-
-```
-# In the directory of the project that will use smhi-node
-npm install smhi-node --save
-```
-
-## Development
-### Prerequisites
-
-```
-# Clone the repository
-git clone https://github.com/thelinmichael/smhi-node.git
-```
-
-```
-# Install Grunt in order to tasks
-npm install -g grunt-cli
-```
-
-```
-# Install dependencies
-npm install
-```
-
-### Tests
-```
-# Run tests and Javascript linting
-grunt
-```
-
 ## To do
-+ Cache results (waiting for SMHI regarding how often the forecasts are updated)
 + Return a Javascript Date instead of just a String for reference time and forecast time

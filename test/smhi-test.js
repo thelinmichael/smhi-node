@@ -1,7 +1,16 @@
 var should = require("should"),
-    unit = require("../src/smhi.js");
+    unit = require("../src/smhi.js"),
+    cacheHandler = require("../src/cache-handler");
 
 describe("SMHI", function() {
+
+  beforeEach(function() {
+    cacheHandler.clean();
+  });
+
+  afterEach(function() {
+    cacheHandler.clean();
+  });
 
   it("should fail if the response is not valid for a valid request", function(done) {
     var latitude = 58.59,

@@ -42,7 +42,7 @@ describe("SMHI Response Objects", function() {
     Response.PrecipitationCategory.FREEZING_DRIZZLE.should.equal(6);
   });
 
-  it("should fail if response doesn't include the origina json", function() {
+  it("should fail if response doesn't include the original json", function() {
     var unit = new Response(null, mockResponse);
     var json = unit.getJSON();
     mockResponse.should.equal(json);
