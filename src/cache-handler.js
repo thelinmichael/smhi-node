@@ -51,7 +51,6 @@ var _getInstance = function() {
   if (!_cacheHandler) {
     _cacheHandler = new CacheHandler();
   }
-  console.log(_cacheHandler.clean());
   return _cacheHandler;
 };
 

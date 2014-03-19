@@ -20,7 +20,7 @@ Response.prototype.getLongitude = function() {
 };
 
 Response.prototype.getReferencetime = function() {
-  return this.body.referenceTime;
+  return new Date(this.body.referenceTime);
 };
 
 Response.prototype.getJSON = function() {
@@ -74,11 +74,11 @@ Forecast.prototype.getLongitude = function() {
 };
 
 Forecast.prototype.getReferencetime = function() {
-  return this.referenceTime;
+  return new Date(this.referenceTime);
 };
 
 Forecast.prototype.getValidTime = function() {
-  return this.validTime;
+  return new Date(this.validTime);
 };
 
 Forecast.prototype.getMeanSeaLevel = function() {

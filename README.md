@@ -108,10 +108,10 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
       }
     });
 
-    // Highest temperature: 9.6°C on 2014-03-22T12:00:00Z
-    console.log("Highest temperature: " + records.highest.getTemperature() + "°C on " + records.highest.getValidTime());
-    // Lowest temperature: 5.3°C on 2014-03-14T21:00:00Z
-    console.log("Lowest temperature: " + records.lowest.getTemperature() + "°C on " + records.lowest.getValidTime()); // 5.3°C
+    // Highest temperature: 9.6°C on 2014-03-22T12:00:00.000Z
+    console.log("Highest temperature: " + records.highest.getTemperature() + "°C on " + records.highest.getValidTime().toJSON());
+    // Lowest temperature: 5.3°C on 2014-03-14T21:00:00.000Z
+    console.log("Lowest temperature: " + records.lowest.getTemperature() + "°C on " + records.lowest.getValidTime().toJSON()); // 5.3°C
   },
   function(error) {
      console.log("I didn't manage to find out, sorry.", error);
@@ -202,7 +202,7 @@ getLatitude()
 getLongitude()
 
 /*
- * @returns {String} Time when the forecast request was made
+ * @returns {Date} Time when the forecast request was made
  */
 getReferenceTime()
 
@@ -240,12 +240,12 @@ getLatitude()
 getLongitude()
 
 /*
- * @returns {String} Time when the forecast request was made
+ * @returns {Date} Time when the forecast request was made
  */
 getReferenceTime()
 
 /*
- * @returns {String} Time of the forecast
+ * @returns {Date} Time of the forecast
  */
 getValidTime()
 
