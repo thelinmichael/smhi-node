@@ -3,31 +3,45 @@ var config = require("../config.json"),
 
 var CacheHandler = function() {
   this._cachedUrls = {};
-  this._ttl = config._cacheTTL;
 };
 
+/**
+ * @param {String} url The url to see if it's in the cache
+ * @returns {Boolean} true if the url is in the cache, false otherwise
+ */
 CacheHandler.prototype.inCache = function(url) {
   return (this._urlExistsInCache(url) && !this._cachedValueTimedOut(url));
 };
 
-CacheHandler.prototype.saveInCache = function(url, response) {
-  if (!this._ttl) {
-    return;
-  }
+/**
+ * Place a result in the cache.
+ * @param {String} url The url to cache
+ * @param {Object} response The cached respone
+ * @param {Number} ttl The number of seconds to keep the cached result
+ */
+CacheHandler.prototype.saveInCache = function(url, response, ttl) {
   this._cachedUrls[url] = {
-    savedTime : Math.floor(new Date().getTime() / 1000),
+    ttl : new Date().getTime() + ttl,
     response : response
   };
 };
 
+/**
+ * Get a cached value for a given url.
+ * @param {String} url The url to get the cached value for
+ * @returns {Object} The cached response for the url, if there is one.
+ * If the value isn't cached, undefined is returned
+ */
 CacheHandler.prototype.getCachedValue = function(url) {
-  if (!this._cachedUrls[url]) {
-    throw Error("URL not cached");
+  if (this.inCache(url)) {
+    return this._cachedUrls[url].response;
   }
-  return this._cachedUrls[url].response;
 };
 
-CacheHandler.prototype.clean = function(clean) {
+/**
+ * Clean the cached values.
+ */
+CacheHandler.prototype.clean = function() {
   this._cachedUrls = {};
 };
 
@@ -37,14 +51,10 @@ CacheHandler.prototype._urlExistsInCache = function(url) {
 
 CacheHandler.prototype._cachedValueTimedOut = function(url) {
   if (this._cachedUrls[url]) {
-    return Math.floor(new Date().getTime() / 1000) > this._cachedUrls[url].savedTime + this._ttl;
+    return (new Date().getTime() - this._cachedUrls[url].ttl > 0);
   } else {
-    return true;
+    return false;
   }
-};
-
-CacheHandler.prototype.setTTL = function(ttl) {
-  this._ttl = ttl;
 };
 
 var _getInstance = function() {

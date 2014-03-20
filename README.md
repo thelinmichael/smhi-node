@@ -2,10 +2,10 @@
 
 **smhi-node** is a JavaScript wrapper for the [Swedish Meteorological and Hydrological Institute](http://www.smhi.se/en)'s (SMHI) [weather forecast API](http://www.smhi.se/klimatdata/Oppna-data/Meteorologiska-data/api-for-vaderprognosdata-1.34233) (text in Swedish), packaged as a Node.js module.
 
-It's an abstracting wrapper in that it not only hides the details of a requests to SMHI from the developer, but also wraps the response in a response object instead of simply outputting it as a JSON object. The purpose of the response object is to make it easier to read and write code that handles the response, using methods that has readable and non-ambiguous names. (e.g. getTemperature() instead of get("t")). If the developer prefers the original JSON, it's available as well.
+It's an abstracting wrapper in that it not only hides the details of a request to SMHI from the developer, but also wraps the response in a response object instead of simply outputting it as a JSON object. The purpose of the response object is to make it easier to read and write code that handles the response, using methods that has readable and non-ambiguous names. (e.g. getTemperature() instead of get("t")). If the developer prefers the original JSON, it's available as well.
 
 ### Caching
-Since SMHI updates its forecasts at least six times a day, this wrapper caches the responses for 15 minutes by default. This is however configurable in the config.json file in the root folder.
+SMHI updates its forecast at 3:30, 7:30, 11:00, 14:00/15:00 (Winter/Summer), 17:30 and 00:00 Central European Time. Instead of caching responses retrieved from the API until a forecast is expected to happen, the wrapper reads the max-age from the Cache-Control header in the HTTP response from the API, and invalidates the cached value when the max-age has passed. That way SMHI can dynamically control how long users should hold on to a result.
 
 ### Dependencies
 [needle](https://github.com/tomas/needle) is used for HTTP requests. [es6-promise](https://www.npmjs.org/package/es6-promise), an EcmaScript 6 polyfill, is used for promises. [Mocha](http://visionmedia.github.io/mocha/) is the testrunner.

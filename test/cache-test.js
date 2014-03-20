@@ -1,3 +1,5 @@
+var should = require("should");
+
 var cacheHandler;
 
 describe("Cache", function() {
@@ -11,21 +13,20 @@ describe("Cache", function() {
   });
 
   it("should fail if it holds on to cache for too long time", function() {
-
     var url = "http://www.test.se";
     var response = { response : "hello!" };
-    var ttl = 1;
-    cacheHandler.setTTL(ttl);
+    var ttl = 1000;
 
-    var savedTime = Math.floor(new Date().getTime() / 1000);
-    cacheHandler.saveInCache(url, response);
-
+    var savedTime = new Date().getTime();
+    cacheHandler.saveInCache(url, response, ttl);
     cacheHandler.inCache(url).should.equal(true);
 
-    while (Math.floor(new Date().getTime() / 1000) - savedTime < ttl + 1) {
-      cacheHandler.inCache(url).should.equal(true);
+    while (new Date().getTime() - savedTime < ttl) {
       cacheHandler.getCachedValue(url).should.equal(response);
     }
+
+    var pauseTime = new Date().getTime();
+    while (new Date().getTime() - pauseTime < 30) {}
 
     cacheHandler.inCache(url).should.equal(false);
   });
@@ -33,19 +34,16 @@ describe("Cache", function() {
   it("should not hold on to cache at all", function() {
     var url = "http://www.test.se";
     var response = { response : "hello!" };
-    var ttl = 0;
-    cacheHandler.setTTL(ttl);
+    var ttl = -1;
 
-    var savedTime = Math.floor(new Date().getTime() / 1000);
-    cacheHandler.saveInCache(url, response);
+    cacheHandler.saveInCache(url, response, ttl);
     cacheHandler.inCache(url).should.equal(false);
   });
 
-  it("should throw if value isnt cached", function() {
+  it("should return undefined if value is not in cache", function() {
     var url = "http://imnotcached.se";
-    (function() {
-      cacheHandler.getCachedValue(url);
-    }).should.throw();
+    var cachedValue = cacheHandler.getCachedValue(url);
+    should.not.exist(cachedValue);
   });
 
 });

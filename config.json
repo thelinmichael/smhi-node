@@ -2,5 +2,5 @@
   "host" : "http://opendata-download-metfcst.smhi.se",
   "port" : 80,
   "apiBasePath" : "/api/category/pmp1.5g/version/1/",
-  "cacheTTL" : 900
+  "useCaching" : true
 }
