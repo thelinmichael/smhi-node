@@ -339,10 +339,3 @@ getSnowPrecipitationIntensity()
  * 6: Freezing drizzle
  */
 getPrecipitationCategory()
-
-/*
- * @returns {Boolean} True if no snow or rain (precipitation category 0),
- * otherwise false
- */
-noPrecipitation()
-```
