@@ -96,4 +96,16 @@ describe("SMHI", function() {
       });
   });
 
+  it("should fail if the precipitation categories don't match", function() {
+    var SMHI = require("../src/smhi");
+
+    SMHI.PrecipitationCategory.NONE.should.equal(0);
+    SMHI.PrecipitationCategory.SNOW.should.equal(1);
+    SMHI.PrecipitationCategory.SNOW_MIXED_WITH_RAIN.should.equal(2);
+    SMHI.PrecipitationCategory.RAIN.should.equal(3);
+    SMHI.PrecipitationCategory.DRIZZLE.should.equal(4);
+    SMHI.PrecipitationCategory.FREEZING_RAIN.should.equal(5);
+    SMHI.PrecipitationCategory.FREEZING_DRIZZLE.should.equal(6);
+  });
+
 });

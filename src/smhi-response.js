@@ -31,16 +31,6 @@ Response.prototype.getForecasts = function() {
   return this.forecasts;
 };
 
-Response.PrecipitationCategory = {
-  NONE : 0,
-  SNOW : 1,
-  SNOW_MIXED_WITH_RAIN : 2,
-  RAIN : 3,
-  DRIZZLE : 4,
-  FREEZING_RAIN : 5,
-  FREEZING_DRIZZLE : 6
-};
-
 var createForecasts = function(body) {
   var baseData = {
     lat : body.lat,

@@ -68,6 +68,8 @@ Example response for Stockholm:
 ## Wrapper Examples
 Below are two examples of wrapper use cases, using same query and getting the same response shown above.
 
+More examples can be found in the [examples folder](https://github.com/thelinmichael/smhi-node/tree/master/examples).
+
 ### Will it rain during the next hour?
 
 ```javascript
@@ -80,7 +82,7 @@ SMHI.getForecastForLatAndLong(latitude, longitude).then(
     var forecasts = response.getForecasts();
     var nextHour = forecasts[0];
 
-    if (nextHour.getPrecipitationCategory() === SMHI.Response.PrecipitationCategory.RAIN) {
+    if (nextHour.getPrecipitationCategory() === SMHI.PrecipitationCategory.RAIN) {
       console.log("It will rain");
     } else {
       console.log("Yay, it won't rain!");
@@ -185,6 +187,19 @@ SMHI.getForecastForLatAndLong(lat, lon)
  * and {Number} lon property, if successful. Otherwise it rejects the promise.
  */
 SMHI.getClosestGridpointForLatAndLong(lat, lon)
+
+/**
+ * Enum for precipitation categories.
+ * @enum {Number}
+ */
+ PrecipitationCategory
+  NONE (0)
+  SNOW (1)
+  SNOW_MIXED_WITH_RAIN (2)
+  RAIN (3)
+  DRIZZLE (4)
+  FREEZING_RAIN (5)
+  FREEZING_DRIZZLE (6)
 ```
 
 ### SMHI Response
@@ -217,18 +232,6 @@ getReferenceTime()
  */
 getJSON()
 
-/**
- * Enum for precipitation categories.
- * @enum {Number}
- */
- PrecipitationCategory
-  NONE (0)
-  SNOW (1)
-  SNOW_MIXED_WITH_RAIN (2)
-  RAIN (3)
-  DRIZZLE (4)
-  FREEZING_RAIN (5)
-  FREEZING_DRIZZLE (6)
 ```
 
 ### Forecast

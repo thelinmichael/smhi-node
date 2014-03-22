@@ -35,4 +35,14 @@ SMHI.getClosestGridpointForLatAndLong = function(lat, lon) {
   return promise;
 };
 
+SMHI.PrecipitationCategory = {
+  NONE : 0,
+  SNOW : 1,
+  SNOW_MIXED_WITH_RAIN : 2,
+  RAIN : 3,
+  DRIZZLE : 4,
+  FREEZING_RAIN : 5,
+  FREEZING_DRIZZLE : 6
+};
+
 module.exports = SMHI;
