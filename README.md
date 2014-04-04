@@ -138,7 +138,7 @@ npm install smhi-node --save
 
 ```
 # config.json
- "cacheTTL" : 900 // Default 900 seconds (15 minutes). 0 turns off caching.
+ "useCaching" : true // Use caching, change to false to turn it off
 ```
 
 ## Development
