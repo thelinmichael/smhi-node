@@ -8,7 +8,7 @@ It's an abstracting wrapper in that it not only hides the details of a request t
 SMHI updates its forecast at 3:30, 7:30, 11:00, 14:00/15:00 (Winter/Summer), 17:30 and 00:00 Central European Time. Instead of caching responses retrieved from the API until a forecast is expected to happen, the wrapper reads the max-age from the Cache-Control header in the HTTP response from the API, and invalidates the cached value when the max-age has passed. That way SMHI can dynamically control how long users should hold on to a result.
 
 ### Dependencies
-[needle](https://github.com/tomas/needle) is used for HTTP requests. [es6-promise](https://www.npmjs.org/package/es6-promise), an EcmaScript 6 polyfill, is used for promises. [Mocha](http://visionmedia.github.io/mocha/) is the testrunner.
+[needle](https://github.com/tomas/needle) is used for HTTP requests. [es6-promise](https://www.npmjs.org/package/es6-promise), an EcmaScript 6 polyfill, is used for promises. [Mocha](http://mochajs.org/) is the testrunner.
 
 [![Build Status](https://travis-ci.org/thelinmichael/smhi-node.png?branch=master)](https://travis-ci.org/thelinmichael/smhi-node)
 
